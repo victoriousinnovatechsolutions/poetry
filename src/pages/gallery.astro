@@ -1,0 +1,37 @@
+---
+import Base from '@/layouts/Base.astro';
+import { CONFIG } from '@/config.js';
+import { GALLERY } from '@/data.js';
+import GalleryPremium from '@/components/GalleryPremium.jsx';
+
+const { poetName } = CONFIG;
+---
+
+<Base title={`गैलरी — ${poetName}`} description="कवि कमल भट्ट 'साहेब' की तस्वीरें — काव्य प्रस्तुति, साहित्यिक समारोह, सम्मान और मंच के पल।" active="/gallery/">
+  <section class="page-hero" data-reveal>
+    <div class="wrap">
+      <span class="eyebrow">गैलरी · {GALLERY.length} तस्वीरें</span>
+      <h1>मंच के <span class="grad">वे पल</span></h1>
+      <p>
+        काव्य-प्रस्तुति, साहित्यिक समारोह, अवार्ड और मीडिया — कवि कमल भट्ट
+        'साहेब' की यात्रा की झलक।
+      </p>
+      <div class="crumbs"><a href="/">मुख्य पृष्ठ</a> / गैलरी</div>
+    </div>
+  </section>
+
+  <GalleryPremium items={GALLERY} variant="full" client:load />
+
+  <section class="section section-soft" style="padding-top:0" data-reveal="scale">
+    <div class="wrap">
+      <div class="cta-band">
+        <h2>अपने कार्यक्रम में कविता बुलाएँ</h2>
+        <p>काव्य गोष्ठी, साहित्यिक समारोह या विद्यालय कार्यक्रम के लिए संपर्क करें।</p>
+        <div class="hero-actions" style="justify-content:center;margin-top:26px">
+          <a href="/contact/" class="btn btn-gold">संपर्क करें</a>
+          <a href="/poetry/" class="btn btn-ghost">कविताएँ पढ़ें</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

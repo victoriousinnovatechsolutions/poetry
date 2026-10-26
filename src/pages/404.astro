@@ -1,0 +1,65 @@
+---
+import Base from '@/layouts/Base.astro';
+import { CONFIG } from '@/config.js';
+
+const { poetName } = CONFIG;
+---
+
+<Base
+  title="पृष्ठ नहीं मिला — कवि कमल भट्ट 'साहेब'"
+  active=""
+  description="यह पृष्ठ उपलब्ध नहीं है। मुख्य पृष्ठ, काव्य संग्रह या गैलरी पर लौटें।"
+>
+  <section class="page-hero" data-reveal="scale">
+    <div class="wrap">
+      <span class="eyebrow">404 · रास्ता भटक गया</span>
+      <h1>यह पृष्ठ <span class="grad">नहीं मिला</span></h1>
+      <p>
+        शब्द कभी-कभी रास्ता भूल जाते हैं। आप जो पृष्ठ ढूंढ रहे हैं वह यहाँ नहीं है —
+        लेकिन कविता, कहानी और तस्वीरें अभी भी आपका इंतज़ार कर रही हैं।
+      </p>
+      <div class="hero-actions" style="justify-content:center;margin-top:34px">
+        <a href="/" class="btn btn-gold">मुख्य पृष्ठ पर जाएँ</a>
+        <a href="/poetry/" class="btn btn-ghost">कविताएँ पढ़ें</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0" data-reveal>
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">इन रास्तों पर चलिए</span>
+        <h2 class="title">आगे की <span class="grad">राह</span></h2>
+      </div>
+      <div class="area-grid">
+        <a class="area-card" href="/about/">
+          <div class="area-body">
+            <h3>जीवन परिचय</h3>
+            <p>रचनाकार की कहानी, शिक्षा और काव्य यात्रा।</p>
+          </div>
+        </a>
+        <a class="area-card" href="/poetry/">
+          <div class="area-body">
+            <h3>काव्य संग्रह</h3>
+            <p>समाज, मातृभाषा, जीवन और भक्ति की रचनाएँ।</p>
+          </div>
+        </a>
+        <a class="area-card" href="/gallery/">
+          <div class="area-body">
+            <h3>गैलरी</h3>
+            <p>मंच, समारोह और सम्मान के यादगार पल।</p>
+          </div>
+        </a>
+        <a class="area-card" href="/contact/">
+          <div class="area-body">
+            <h3>संपर्क</h3>
+            <p>काव्य कार्यक्रम या सहयोग के लिए संदेश भेजें।</p>
+          </div>
+        </a>
+      </div>
+      <p style="text-align:center;margin-top:28px;color:var(--muted)">
+        — {poetName}
+      </p>
+    </div>
+  </section>
+</Base>

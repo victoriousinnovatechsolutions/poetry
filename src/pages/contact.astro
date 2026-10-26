@@ -1,0 +1,62 @@
+---
+import Base from '@/layouts/Base.astro';
+import { CONFIG } from '@/config.js';
+import { CONTACT_ROWS, SOCIALS } from '@/data.js';
+import ContactPremium from '@/components/ContactPremium.jsx';
+
+const { poetName, formEndpoint } = CONFIG;
+
+const topics = [
+  {
+    title: 'काव्य कार्यक्रम',
+    desc: 'कवि सम्मेलन, काव्य गोष्ठी, साहित्यिक समारोह या विद्यालय कार्यक्रम के लिए आमंत्रण।',
+  },
+  {
+    title: 'प्रकाशन एवं सहयोग',
+    desc: 'रचना प्रकाशन, पुस्तक समीक्षा, साक्षात्कार या साहित्यिक सहयोग के प्रस्ताव।',
+  },
+  {
+    title: 'शुभकामनाएँ',
+    desc: 'कविता पर प्रतिक्रिया, पाठकों के सुझाव और साहित्य-प्रेमियों का संदेश।',
+  },
+];
+---
+
+<Base title={`संपर्क — ${poetName}`} description="कवि कमल भट्ट 'साहेब' से संपर्क करें — काव्य प्रस्तुति, साहित्यिक कार्यक्रम, प्रकाशन एवं सहयोग के लिए।" active="/contact/">
+  <section class="page-hero" data-reveal>
+    <div class="wrap">
+      <span class="eyebrow">संपर्क</span>
+      <h1>कविता से <span class="grad">जुड़िए</span></h1>
+      <p>
+        काव्य प्रस्तुति, साहित्यिक कार्यक्रम, प्रकाशन या सहयोग के लिए — आपका
+        संदेश सुस्वागत है।
+      </p>
+      <div class="crumbs"><a href="/">मुख्य पृष्ठ</a> / संपर्क</div>
+    </div>
+  </section>
+
+  <section class="section section-soft" data-reveal>
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">आप किस लिए संपर्क कर रहे हैं?</span>
+        <h2 class="title">
+          हर संदेश का <span class="grad">स्वागत</span>
+        </h2>
+      </div>
+
+      <div class="edu-grid">
+        {topics.map((t, i) => (
+          <article class="edu-card hover-lift">
+            <div class="edu-icon" aria-hidden="true">
+              <span class="edu-num">{String(i + 1).padStart(2, '0')}</span>
+            </div>
+            <h4>{t.title}</h4>
+            <p>{t.desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ContactPremium rows={CONTACT_ROWS} socials={SOCIALS} endpoint={formEndpoint} client:load />
+</Base>

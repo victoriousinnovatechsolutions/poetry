@@ -1,0 +1,37 @@
+---
+import Base from '@/layouts/Base.astro';
+import { CONFIG } from '@/config.js';
+import { POEMS, POEM_CATEGORIES } from '@/data.js';
+import PoetryGridPremium from '@/components/PoetryGridPremium.jsx';
+
+const { poetName } = CONFIG;
+---
+
+<Base title={`काव्य संग्रह — ${poetName}`} description="कवि कमल भट्ट 'साहेब' की सम्पूर्ण कविताएँ — समाज संवेदना, मातृभाषा, जीवन दर्शन, प्रेम और धार्मिक काव्य।" active="/poetry/">
+  <section class="page-hero" data-reveal>
+    <div class="wrap">
+      <span class="eyebrow">काव्य संग्रह · {POEMS.length} रचनाएँ</span>
+      <h1>जहाँ <span class="grad">हर शब्द</span> एक भावना है</h1>
+      <p>
+        समाज की पुकार से मातृभाषा के गौरव तक, प्रेम की तड़प से भक्ति की महिमा तक
+        — पढ़िए कवि कमल भट्ट 'साहेब' की चुनी हुई रचनाएँ।
+      </p>
+      <div class="crumbs"><a href="/">मुख्य पृष्ठ</a> / काव्य संग्रह</div>
+    </div>
+  </section>
+
+  <PoetryGridPremium poems={POEMS} categories={POEM_CATEGORIES} variant="full" client:load />
+
+  <section class="section section-soft" style="padding-top:0" data-reveal="scale">
+    <div class="wrap">
+      <div class="cta-band">
+        <h2>आपकी पसंदीदा कविता कौन सी है?</h2>
+        <p>किसी कविता पर अपनी प्रतिक्रिया, आयोजन निमंत्रण या सहयोग के लिए संपर्क करें।</p>
+        <div class="hero-actions" style="justify-content:center;margin-top:26px">
+          <a href="/contact/" class="btn btn-gold">संपर्क करें</a>
+          <a href="/gallery/" class="btn btn-ghost">गैलरी देखें</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

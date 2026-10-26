@@ -1,0 +1,58 @@
+---
+import Base from '@/layouts/Base.astro';
+import { CONFIG } from '@/config.js';
+import { AWARDS } from '@/data.js';
+import AwardGridPremium from '@/components/AwardGridPremium.jsx';
+
+const { poetName } = CONFIG;
+const national = AWARDS.filter((a) => a.lvl === 'nat').length;
+const international = AWARDS.filter((a) => a.lvl === 'intl').length;
+---
+
+<Base title={`पुरस्कार एवं सम्मान — ${poetName}`} description="कवि कमल भट्ट 'साहेब' को प्राप्त 7 पुरस्कार — 5 राष्ट्रीय और 2 अंतरराष्ट्रीय स्तर के सम्मान।" active="/awards/">
+  <section class="page-hero" data-reveal>
+    <div class="wrap">
+      <span class="eyebrow">सम्मान एवं पुरस्कार</span>
+      <h1>कलम की <span class="grad">पहचान</span> और सम्मान</h1>
+      <p>
+        अल्पायु में ही राष्ट्रीय और अंतरराष्ट्रीय स्तर पर मिली मान्यता — यह साहित्य
+        के प्रति निष्ठा और समाज-संवेदना का परिणाम है।
+      </p>
+      <div class="crumbs"><a href="/">मुख्य पृष्ठ</a> / पुरस्कार</div>
+    </div>
+  </section>
+
+  <section class="section section-stats" data-reveal>
+    <div class="wrap">
+      <div class="mini-stats">
+        <div class="mini-stat">
+          <b><span data-count={AWARDS.length}>{AWARDS.length}</span></b>
+          <span>कुल सम्मान</span>
+        </div>
+        <div class="mini-stat">
+          <b><span data-count={national}>{national}</span></b>
+          <span>राष्ट्रीय</span>
+        </div>
+        <div class="mini-stat">
+          <b><span data-count={international}>{international}</span></b>
+          <span>अंतरराष्ट्रीय</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <AwardGridPremium awards={AWARDS} variant="full" />
+
+  <section class="section section-soft" style="padding-top:0" data-reveal="scale">
+    <div class="wrap">
+      <div class="cta-band">
+        <h2>सम्मान से आगे — सेवा का संकल्प</h2>
+        <p>हर पुरस्कार समाज और हिंदी साहित्य के प्रति ज़िम्मेदारी और बढ़ाता है।</p>
+        <div class="hero-actions" style="justify-content:center;margin-top:26px">
+          <a href="/about/" class="btn btn-gold">जीवन परिचय</a>
+          <a href="/poetry/" class="btn btn-ghost">काव्य संग्रह</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

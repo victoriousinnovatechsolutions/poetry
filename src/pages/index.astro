@@ -1,0 +1,295 @@
+---
+import Base from '@/layouts/Base.astro';
+import { CONFIG } from '@/config.js';
+import { POEMS, AWARDS, GALLERY, POEM_CATEGORIES, EDUCATION } from '@/data.js';
+import PremiumHero from '@/components/PremiumHero.jsx';
+import AwardGridPremium from '@/components/AwardGridPremium.jsx';
+import GalleryPremium from '@/components/GalleryPremium.jsx';
+import PoetryGridPremium from '@/components/PoetryGridPremium.jsx';
+
+const { poetName, born, from } = CONFIG;
+const featuredPoem = POEMS[0];
+
+const tickerWords = [
+  'समाज संवेदना',
+  'मातृभाषा',
+  'जीवन दर्शन',
+  'प्रेम',
+  'भक्ति',
+  'काव्य पाठ',
+  'राष्ट्रीय सम्मान',
+  'अंतरराष्ट्रीय सम्मान',
+];
+
+const areas = [
+  {
+    title: 'समाज संवेदना',
+    desc: 'दबे-कुचले वर्ग, गरीबी और न्याय की आवाज़ — कविता जो समाज से सवाल करती है।',
+    img: '/assets/images/events/event-group.jpg',
+    href: '/poetry/?cat=samaj',
+  },
+  {
+    title: 'मातृभाषा',
+    desc: 'हिंदी को माँ कहने का साहस — भाषा, पहचान और अस्तित्व का गौरव।',
+    img: '/assets/images/poet/poet-formal.jpg',
+    href: '/poetry/?cat=matribhasha',
+  },
+  {
+    title: 'जीवन दर्शन',
+    desc: 'वक्त, संघर्ष और अजनबी ज़िंदगी के बीच छिपे सच की काव्यात्मक पड़ताल।',
+    img: '/assets/images/poet/poet-outdoor.jpg',
+    href: '/poetry/?cat=jeevan',
+  },
+  {
+    title: 'प्रेम एवं भक्ति',
+    desc: 'हसरतों का आशियाना और राम महिमा — दिल से निकली भक्ति की धुन।',
+    img: '/assets/images/events/event-banner-stage.jpg',
+    href: '/poetry/?cat=dharm',
+  },
+];
+
+const quotePoems = [POEMS[2], POEMS[1], POEMS[5]];
+---
+
+<Base title={poetName} description="कवि कमल भट्ट 'साहेब' — हिंदी काव्य की सच्ची आवाज़। समाज संवेदना, मातृभाषा, जीवन दर्शन, प्रेम और भक्ति की रचनाएँ, सम्मान एवं गैलरी।" active="/">
+  <PremiumHero poetName={poetName} />
+
+  <!-- Ticker -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      {[...tickerWords, ...tickerWords].map((word) => (
+        <span class="ticker-item">{word}</span>
+      ))}
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <section class="stats" data-reveal="scale">
+    <div class="wrap">
+      <div class="stats-grid">
+        <div class="stat">
+          <b><span data-count="5">5</span></b>
+          <span>प्रकाशित रचनाएँ</span>
+        </div>
+        <div class="stat">
+          <b><span data-count="9">9</span></b>
+          <span>कविताएँ</span>
+        </div>
+        <div class="stat">
+          <b><span data-count="7">7</span></b>
+          <span>कुल सम्मान</span>
+        </div>
+        <div class="stat">
+          <b><span data-count="2">2</span></b>
+          <span>अंतरराष्ट्रीय</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About preview -->
+  <section class="section" id="about" data-reveal>
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-visual" data-reveal="left">
+          <div class="about-photo">
+            <img
+              src="/assets/images/poet/poet-stage-podium.jpg"
+              alt="कवि कमल भट्ट 'साहेब' मंच पर काव्य प्रस्तुति देते हुए"
+              loading="lazy"
+            />
+            <span class="photo-glow"></span>
+            <span class="photo-name">अभिव्यक्ति 5.0 · काव्य प्रस्तुति</span>
+            <span class="frame-line"></span>
+          </div>
+          <div class="about-badge">
+            <b>5+</b>
+            <span>प्रकाशित रचनाएँ</span>
+          </div>
+        </div>
+
+        <div data-reveal="right">
+          <div class="section-head">
+            <span class="eyebrow">जीवन परिचय</span>
+            <h2 class="title">
+              एक <span class="grad">रचनाकार</span> की कहानी
+            </h2>
+            <p class="lede">
+              मध्य प्रदेश की मिट्टी से निकली एक आवाज़, जो समाज की पीड़ा,
+              मातृभाषा का गौरव और जीवन के सच अपने काव्य में उतारती है।
+            </p>
+          </div>
+
+          <div class="info-list">
+            <div class="info-item">
+              <small>जन्म तिथि</small>
+              <b>{born}</b>
+            </div>
+            <div class="info-item">
+              <small>जन्म स्थान</small>
+              <b>मेलखेड़ा, मंदसौर (MP)</b>
+            </div>
+            <div class="info-item full">
+              <small>पता</small>
+              <b>{from}</b>
+            </div>
+            <div class="info-item full">
+              <small>पेशा</small>
+              <b>कवि एवं साहित्यकार — हिंदी काव्य एवं मंचीय प्रस्तुति</b>
+            </div>
+          </div>
+
+          <a href="/about/" class="btn btn-gold" style="margin-top:24px">पूरी कहानी पढ़ें</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Poetry areas -->
+  <section class="section section-soft" data-reveal>
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">काव्य क्षेत्र</span>
+        <h2 class="title">
+          कलम के <span class="grad">चार रंग</span>
+        </h2>
+        <p class="lede">
+          हर भावना का अपना स्वर — समाज, भाषा, जीवन और भक्ति के चार काव्य-क्षेत्र।
+        </p>
+      </div>
+
+      <div class="area-grid">
+        {areas.map((area, i) => (
+          <a class="area-card" href={area.href} aria-label={`${area.title} — कविताएँ देखें`}>
+            <div class="area-img">
+              <img src={area.img} alt={area.title} loading="lazy" />
+              <span class="area-num">{String(i + 1).padStart(2, '0')}</span>
+            </div>
+            <div class="area-body">
+              <h3>{area.title}</h3>
+              <p>{area.desc}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured poem spotlight -->
+  <section class="section spotlight" data-reveal>
+    <div class="wrap">
+      <div class="spotlight-grid">
+        <div>
+          <span class="eyebrow">आज की कविता</span>
+          <div class="spotlight-quote">
+            <p>
+              “वक्त के समुद्र में सब कुछ बह जाता है, अच्छा हो या बुरा सब कुछ बह
+              जाता है…”
+            </p>
+          </div>
+          <div class="spotlight-author">— {poetName}</div>
+          <div class="spotlight-actions">
+            <a href="/poetry/" class="btn btn-gold">पूरी कविता पढ़ें</a>
+            <a href="/poetry/" class="btn btn-ghost">सभी कविताएँ</a>
+          </div>
+        </div>
+
+        <div class="spotlight-side">
+          <a class="side-card" href="/poetry/">
+            <b>09</b>
+            <span>कविताएँ संग्रह में</span>
+          </a>
+          <a class="side-card" href="/about/#stages">
+            <b>06</b>
+            <span>काव्य अध्याय</span>
+          </a>
+          <a class="side-card" href="/poetry/">
+            <b>05</b>
+            <span>प्रकाशित रचनाएँ</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">शिक्षा</span>
+        <h2 class="title">
+          ज्ञान की <span class="grad">सीढ़ियाँ</span>
+        </h2>
+        <p class="lede">कला, शिक्षा और हिंदी साहित्य — तीनों में उच्च शिक्षा प्राप्त।</p>
+      </div>
+
+      <div class="edu-grid">
+        {EDUCATION.map((edu, i) => (
+          <article class="edu-card hover-lift" data-reveal data-delay={i * 70}>
+            <div class="edu-icon" aria-hidden="true">
+              <span class="edu-num">{String(i + 1).padStart(2, '0')}</span>
+            </div>
+            <h4>{edu.degree}</h4>
+            <div class="deg">{edu.field}</div>
+            <p>{edu.desc}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Poetry preview -->
+  <PoetryGridPremium poems={POEMS.slice(0, 6)} categories={POEM_CATEGORIES} variant="preview" client:load />
+
+  <!-- Awards preview -->
+  <AwardGridPremium awards={AWARDS.slice(0, 3)} variant="preview" />
+
+  <!-- Gallery preview -->
+  <GalleryPremium items={GALLERY.slice(0, 8)} variant="preview" client:load />
+
+  <!-- Lines that stay -->
+  <section class="section" data-reveal>
+    <div class="wrap">
+      <div class="section-head center">
+        <span class="eyebrow">शब्द जो छू जाते हैं</span>
+        <h2 class="title">
+          कविता की <span class="grad">गूँज</span>
+        </h2>
+        <p class="lede">कुछ पंक्तियाँ पढ़ते ही भीतर तक उतर जाती हैं।</p>
+      </div>
+
+      <div class="quote-grid">
+        {quotePoems.map((poem) => (
+          <article class="quote-card">
+            <span class="quote-stars" aria-hidden="true">✦ ✦ ✦</span>
+            <p>“{poem.lines[0]}”</p>
+            <div class="quote-who">
+              <span aria-hidden="true">{poem.catLabel.slice(0, 1)}</span>
+              <div>
+                <b>{poem.title}</b>
+                <small>{poem.catLabel}</small>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" style="padding-top:0" data-reveal="scale">
+    <div class="wrap">
+      <div class="cta-band">
+        <h2>कविता से जुड़िए</h2>
+        <p>
+          काव्य प्रस्तुति, साहित्यिक कार्यक्रम, प्रकाशन या सहयोग — आपका संदेश
+          सुस्वागत है।
+        </p>
+        <div class="hero-actions" style="justify-content:center;margin-top:26px">
+          <a href="/contact/" class="btn btn-gold">संपर्क करें</a>
+          <a href="/poetry/" class="btn btn-ghost">काव्य संग्रह</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
